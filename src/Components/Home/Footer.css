@@ -1,0 +1,48 @@
+.first-row {
+    font-size: 9px;
+    
+
+}
+.main{
+    height: 180px;
+    background-color: rgb(197 193 193);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h3{
+    font-size:small;
+}
+.edison{
+    font-size: medium;
+    
+}
+.rule{
+    font-size: small;
+}
+li{
+   font-size: 10px;
+}
+.spoti{
+
+  background-color: rgb(197 193 193);
+}
+.group{
+    margin-left: 16px;
+    font-size: small;
+}
+.social{
+    margin: 10px;
+    margin-left: 24px;
+}
+.facebook{
+    color: #4267B2
+    ;
+}
+.twitter{
+    color:#1DA1F2 ;
+}
+.google{
+    color: rgb(185, 16, 16);
+}
