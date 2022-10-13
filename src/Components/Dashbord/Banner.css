@@ -1,0 +1,112 @@
+.c-top{
+   height: 150px;
+    background-color: #556de65e;
+    width: auto;
+    padding: 15px;
+    border-top-left-radius: 0.375rem;
+    border-top-right-radius: 0.375rem;
+
+
+
+}
+.c-top h5{
+    color: #556de6;
+}
+.c-top p{
+    color: #556de6;
+}
+.main-card{
+    /* max-height: 300px; */
+    border-radius: 0.375;
+    border: none;
+   
+    
+}
+.c-bottom{
+    height: 150px;
+    background-color: rgb(255, 255, 255);
+     border-bottom-left-radius: 0.375rem;
+    border-bottom-right-radius: 0.375rem; 
+    
+}
+.card-bg1{
+        height: 150px;
+        width: auto;
+        padding-bottom: 10px;
+}
+.cardbg-body{
+    display: flex;
+    justify-content: flex-end;
+
+}
+.botton-row{
+    color: rgba(0, 0, 0, 0.699);
+    padding: 15px;
+}
+.botton-row p{
+    color: gray;
+    font-size: small;
+}
+.botton-row h6{
+    
+    font-size: small;
+}
+.btncard{
+    width: 100px;
+    height: 33px;
+    padding: 6px;
+    background-color: #4267B2
+    ;
+    border: none;
+    font-size: small;
+}
+.avatar{
+    height: 55px;
+    width: 55px;
+    position: absolute;
+    /* border: 24px; */
+    border-radius: 53px;
+    bottom: 121px;
+}
+.card-avatar{
+    padding: 13px;
+}
+.banner-container{
+    background-color: rgb(166 178 242 / 17%); 
+    height: 100vh;
+}
+
+.first-card,.second-card,.third-card,.fourth-card{
+    
+    height: 144px;
+    border: none;
+   
+}
+                                
+.first-card,.second-card,.third-card,.fourth-card,CardTitle,CardText {
+    padding: 15px;
+
+}
+.first-icon{
+    display: flex;
+    justify-content: flex-end;
+   
+}
+.second-icon{
+    display: flex;
+    justify-content: flex-end;
+
+}
+.third-icon{
+    display: flex;
+    justify-content: flex-end;
+
+}
+.fourth-icon{
+    display: flex;
+    justify-content: flex-end
+
+}
+.first-icon img,.second-icon img,.third-icon img,.fourth-icon img{
+    height: 50px;
+}

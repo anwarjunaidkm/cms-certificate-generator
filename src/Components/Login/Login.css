@@ -1,6 +1,8 @@
 .section{
     height: 100vh;
     background-color:rgb(197 193 193);
+    width: 100%;
+    
 }
 .box{
     width: 400px;
@@ -13,13 +15,13 @@
     border-radius: 4px;
 
 }
-/* .container{
-    /* display: flex;
-     justify-content: center;  */
-      */
+.containerLogin{
+    display: flex;
+     justify-content: center;  
+      
     
 
-
+}
 
 .edisonLogin{
     text-align: center;

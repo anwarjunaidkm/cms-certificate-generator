@@ -1,0 +1,76 @@
+.search{
+    border-radius: 25px;
+}
+
+
+.dashHeader{
+    background-color: var(--primary-color);
+   
+}
+
+.ediondash{
+    color: rgba(255, 255, 255, 0.815);
+    padding-left: 37px;
+   
+}
+
+.usericon{
+    height: 30px;
+    width: 30px;
+    color: rgb(255, 255, 255);
+}
+.threedot{
+    color: white;
+    padding-top: 5px;
+    /* align-items: center; */
+    padding-right: 12px;
+}
+.right-avatar{
+    padding-right: 120px;
+}
+----------------black--------------
+/* .dash-header{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    margin-left: 50px;
+}
+
+.header-right{
+    display: flex;
+    justify-content: start;
+    
+}
+
+.header-left{
+    display: flex;
+    justify-content: space-between;
+    width: 82%;
+}
+
+/* .header-center{
+    display: flex;
+    justify-content: center;
+} */
+
+.search{
+    border-radius: 20px;
+    background-color: rgb(241 241 241);
+    border: none;
+}
+
+.three-dot{
+    color: black;
+} 
+
+/* 
+<Card border="primary" style={{ width: '18rem' }}>
+<Card.Header>Header</Card.Header>
+<Card.Body>
+  <Card.Title>Primary Card Title</Card.Title>
+  <Card.Text>
+    Some quick example text to build on the card title and make up the
+    bulk of the card's content.
+  </Card.Text>
+</Card.Body>
+</Card> */

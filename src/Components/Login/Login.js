@@ -4,8 +4,9 @@ import { Container } from "react-bootstrap";
 
 const Login = () => {
   return (
+    
     <section className="section">
-      <Container className="container">
+      <Container className="containerLogin">
         <div className="box">
           <div className="edisonLogin ">EDISONVALLEY</div>
           

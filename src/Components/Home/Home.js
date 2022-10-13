@@ -3,6 +3,7 @@ import { Button, Nav, Navbar, Container, Row, Col } from "react-bootstrap";
 import "./Home.css";
 import one from "../Home/sample.jpg";
 import Footer from "./Footer";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -46,9 +47,9 @@ const Home = () => {
                   We are a bunch of tech enthusiasts determined to uplift the
                   society utilising the latest technologies around us.
                 </p>
-                <Button className="text-white btnOne" variant="warning">
+             <Link to={'/login'}>  <Button className="text-white btnOne" variant="warning">
                   LogIn
-                </Button>{" "}
+                </Button>{" "} </Link> 
               </div>
             </Col>
             <Col md="6">
