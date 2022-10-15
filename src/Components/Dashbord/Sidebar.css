@@ -12,6 +12,10 @@ background-color: rgb(255, 255, 255);
    
     color: gray;
     padding-left: 15px;
+    text-decoration: none;
+}
+a{
+    text-decoration: none;
 }
 
 .side{

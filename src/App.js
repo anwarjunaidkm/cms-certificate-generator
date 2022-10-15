@@ -6,6 +6,11 @@ import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom'
 import Login from './Components/Login/Login';
 import Dashbord from './Components/Dashbord/Dashbord';
 import { ProSidebarProvider } from 'react-pro-sidebar';
+import Allstudents from './Components/Dashbord/Allstudents';
+import AllstudentsPage from './Pages/AllstudentsPage';
+import UpdateStudentPage from './Pages/UpdateStudentPage';
+import CreateStudentPage from './Pages/CreateStudentPage';
+
 
 
 
@@ -22,6 +27,9 @@ function App() {
           <Route path='/' exact element={ <Home />   }></Route>          
           <Route path='login' element={<Login />}></Route>
           <Route path='dashbord' element={<Dashbord />}></Route>
+          <Route path='allstudents' element={<AllstudentsPage />}></Route>
+          <Route path='updatestudent' element={<UpdateStudentPage />}></Route>
+          <Route path='createstudent' element={<CreateStudentPage />}></Route>
 
 
 

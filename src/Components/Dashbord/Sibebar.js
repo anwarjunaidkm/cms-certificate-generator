@@ -43,14 +43,14 @@ function Sibebar() {
           </Menu>
         </Sidebar>
          */}
- <h3 className='dashHedaing'><i><FaHouseUser /></i> Dashboard</h3>
+<Link to={"/dashbord"}> <h3 style={{textDecoration:'none'}} className='dashHedaing'><i><FaHouseUser /></i> Dashboard</h3></Link>
 
 
 <ul className="list-items">
                  <li className='head-list'><a href="#"><i><FaUserCircle /> </i>Students</a></li>
-                   <li className='sub-list'> <Link to={""}>All Students</Link></li>
-                    <li className='sub-list'><Link to={"#"}>Update Student</Link></li>
-                    <li className='sub-list'><Link to={"#"}>Create Student</Link></li>
+                   <li className='sub-list'> <Link to={"/allstudents"}>All Students</Link></li>
+                    <li className='sub-list'><Link to={"/updatestudent"}>Update Student</Link></li>
+                    <li className='sub-list'><Link to={"/createstudent"}>Create Student</Link></li>
            
                <li className='head-list'><a href="#"><i><FaBookReader /> </i>Courses</a></li>
                    <li className='sub-list'><Link to={"#"}>All Courses </Link></li>

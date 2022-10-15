@@ -1,6 +1,7 @@
 import React from "react";
 import "./Login.css";
 import { Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -8,7 +9,7 @@ const Login = () => {
     <section className="section">
       <Container className="containerLogin">
         <div className="box">
-          <div className="edisonLogin ">EDISONVALLEY</div>
+        <Link to={'/'}>  <div className="edisonLogin ">EDISONVALLEY</div></Link>
           
           <div className="input ">
                 <h3>Login</h3>

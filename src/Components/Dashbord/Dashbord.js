@@ -6,6 +6,7 @@ import Banner from './Banner'
 import {Card, CardBody, CardTitle } from 'react-bootstrap'
 import './Dashbord.css'
 import Login from '../Login/Login'
+import Allstudents from './Allstudents'
 
 
 const Dashbord = () => {
@@ -17,6 +18,7 @@ const Dashbord = () => {
       
       <Layout >
       <Banner />
+      
       
       
         </Layout>  

@@ -20,6 +20,7 @@ function Banner() {
     <Container>
      <Row style={{padding:'12px',paddingTop:'24px',marginRight:'0'}}>
                 <Col md='4'>
+                    <Container>
                     <Card className='main-card'>
                         <div className="c-top">
                             <Row>
@@ -63,13 +64,16 @@ function Banner() {
                         </div>
 
                     </Card>
+                    </Container>
                 
                 
                 
                 </Col>
                 <Col md='8'>
+                
                     <Row>
                         <Col md='6' style={{marginBottom:'10px'}}>
+                            
                         <Card className='first-card' style={{ color:'rgba(0, 0, 0, 0.699)'}}>
                                 <CardTitle style={{fontSize:'small'}} tag="h5">
                                 Available Courses
@@ -80,6 +84,7 @@ function Banner() {
                                 </CardText>
                                 <div className='first-icon' > <img src={icon1} alt="" /></div>                               
                             </Card>
+                           
                         </Col>
                         <Col md='6'>
                         <Card className='second-card' style={{ color:'rgba(0, 0, 0, 0.699)'}}
@@ -130,12 +135,13 @@ function Banner() {
                     </Row>
                 
                 
-                
+                    
                 </Col>
                 
 
 
      </Row>
+    
      </Container>
 
     
