@@ -13,6 +13,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserTie,faUser } from '@fortawesome/free-solid-svg-icons'
 import {GoThreeBars} from 'react-icons/go'
+import { Link } from "react-router-dom";
 
 function Header() {
    
@@ -25,9 +26,9 @@ function Header() {
         variant="dark"
       >
          {/* <Container> */}
-          <Navbar.Brand href="#home" className="ediondash">
-            EDISON VALLEY
-          </Navbar.Brand>
+         <Link to={"/"}>      <Navbar.Brand href="#home" className="ediondash">
+           EDISON VALLEY 
+          </Navbar.Brand></Link>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">

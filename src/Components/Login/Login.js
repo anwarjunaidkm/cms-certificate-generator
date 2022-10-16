@@ -14,7 +14,7 @@ const Login = () => {
           <div className="input ">
                 <h3>Login</h3>
           <div class="form-outline mb-4">
-            <label className="label">Username</label>
+            <label className="label" style={{marginBottom:'8px'}}>Username</label>
             <input type="text" placeholder="Username" class="form-control" />
           </div>
 

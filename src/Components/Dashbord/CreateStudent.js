@@ -150,8 +150,8 @@ const CreateStudent = () => {
                   <Input style={{backgroundColor:'#c5c1c1d7'}}  type="file" />
                 </FormGroup>
               </Col>
-              <div style={{display:'flex',justifyContent:'flex-end',paddingRight:'3px'}}>
-              <div style={{paddingRight:'10px'}}>
+              <div style={{display:'flex',justifyContent:'flex-end',paddingRight:'15px'}}>
+              <div style={{paddingRight:'15px'}}>
               <Button style={{}} className='back-btn' color="secondary" size="">
                   Back
                 </Button>
