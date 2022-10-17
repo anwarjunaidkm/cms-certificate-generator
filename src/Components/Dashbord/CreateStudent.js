@@ -26,7 +26,7 @@ const CreateStudent = () => {
                   >
                     Full Name :
                   </Label>
-                  <Input style={{backgroundColor:'#c5c1c1d7'}}  placeholder="ANWAR JUNAID" type="text" />
+                  <Input style={{backgroundColor:'#c5c1c1d7'}}  placeholder="Name" type="text" />
                 </FormGroup>
               </Col>
               <Col md={6}>
@@ -59,7 +59,7 @@ const CreateStudent = () => {
                   </Label>
                   <Input style={{backgroundColor:'#c5c1c1d7'}}
                     name="email"
-                    placeholder="ajvly22@gmail.com"
+                    placeholder="Enter e-mail"
                     type="email"
                   />
                 </FormGroup>
@@ -123,7 +123,7 @@ const CreateStudent = () => {
                   >
                     Address :
                   </Label>
-                  <Input style={{backgroundColor:'#c5c1c1d7'}} placeholder="Malappuram" type="text" />
+                  <Input style={{backgroundColor:'#c5c1c1d7'}} placeholder="Address" type="text" />
                 </FormGroup>
               </Col>
               <Col md={6}>
@@ -137,7 +137,7 @@ const CreateStudent = () => {
                   >
                     Phone
                   </Label>
-                  <Input style={{backgroundColor:'#c5c1c1d7'}} placeholder="9746639178" type="number" />
+                  <Input style={{backgroundColor:'#c5c1c1d7'}} placeholder="99999999" type="number" />
                 </FormGroup>
               </Col>
               <Col md={6}>

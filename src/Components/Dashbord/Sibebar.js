@@ -59,8 +59,8 @@ function Sibebar() {
 
                <li className='head-list'><Link to={"#"}><i><BiCategory /> </i>Courses Category</Link></li>
                <li className='sub-list'><Link to={"#"}>All Courses Category  </Link></li>
-                 <li  className='sub-list'><Link to={"#"}>Update Courses Category</Link></li>
-                 <li className='sub-list'><Link to={"#"}>Create Courses Category</Link></li>
+                 <li  className='sub-list'><Link to={"/updatecategory"}>Update Courses Category</Link></li>
+                 <li className='sub-list'><Link to={"/createcategory"}>Create Courses Category</Link></li>
               
                
             </ul>

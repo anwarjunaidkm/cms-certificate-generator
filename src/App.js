@@ -13,7 +13,8 @@ import CreateStudentPage from './Pages/CreateStudentPage';
 import AllcoursesPage from './Pages/AllcoursesPage';
 import UpdateCoursesPage from './Pages/UpdateCoursesPage';
 import { CreateCoursePage } from './Pages/CreateCoursePage';
-
+import CreateCategoryPage from './Pages/CreateCategoryPage';
+import UpdateCategoryPage from './Pages/UpdateCategoryPage'
 
 
 
@@ -36,6 +37,10 @@ function App() {
           <Route path='allcourses' element={<AllcoursesPage />}></Route>
           <Route path='updatecourses' element={<UpdateCoursesPage />}></Route>
           <Route path='createcourses' element={<CreateCoursePage />}></Route>
+          <Route path='createcategory' element={<CreateCategoryPage />}></Route>
+          <Route path='updatecategory' element={<UpdateCategoryPage />}></Route>
+
+          
 
 
 

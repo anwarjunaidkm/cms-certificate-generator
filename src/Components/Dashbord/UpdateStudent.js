@@ -26,7 +26,7 @@ function UpdateStudent() {
                     >
                       Full Name :
                     </Label>
-                    <Input style={{backgroundColor:'#c5c1c1d7'}}  placeholder="ANWAR JUNAID" type="text" />
+                    <Input style={{backgroundColor:'#c5c1c1d7'}}  placeholder="NAME" type="text" />
                   </FormGroup>
                 </Col>
                 <Col md={6}>
@@ -40,7 +40,7 @@ function UpdateStudent() {
                     >
                       Designation :
                     </Label>
-                    <Input style={{backgroundColor:'#c5c1c1d7'}} placeholder="lorem ipsum" type="text" />
+                    <Input style={{backgroundColor:'#c5c1c1d7'}} placeholder="Designation" type="text" />
                   </FormGroup>
                 </Col>
               </Row>
@@ -59,7 +59,7 @@ function UpdateStudent() {
                     </Label>
                     <Input style={{backgroundColor:'#c5c1c1d7'}}
                       name="email"
-                      placeholder="ajvly22@gmail.com"
+                      placeholder="Enter e-mail"
                       type="email"
                     />
                   </FormGroup>
@@ -123,7 +123,7 @@ function UpdateStudent() {
                     >
                       Address :
                     </Label>
-                    <Input style={{backgroundColor:'#c5c1c1d7'}} placeholder="Malappuram" type="text" />
+                    <Input style={{backgroundColor:'#c5c1c1d7'}} placeholder="Address" type="text" />
                   </FormGroup>
                 </Col>
                 <Col md={6}>
@@ -137,7 +137,7 @@ function UpdateStudent() {
                     >
                       Phone
                     </Label>
-                    <Input style={{backgroundColor:'#c5c1c1d7'}} placeholder="9746639178" type="number" />
+                    <Input style={{backgroundColor:'#c5c1c1d7'}} placeholder="999999999" type="number" />
                   </FormGroup>
                 </Col>
                 <Col md={6}>
