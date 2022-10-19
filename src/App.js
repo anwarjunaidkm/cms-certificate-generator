@@ -15,6 +15,8 @@ import UpdateCoursesPage from './Pages/UpdateCoursesPage';
 import { CreateCoursePage } from './Pages/CreateCoursePage';
 import CreateCategoryPage from './Pages/CreateCategoryPage';
 import UpdateCategoryPage from './Pages/UpdateCategoryPage'
+import AllcourseCategoryPage from './Pages/AllcourseCategoryPage';
+import Studentview from './Components/Dashbord/Studentview';
 
 
 
@@ -39,6 +41,8 @@ function App() {
           <Route path='createcourses' element={<CreateCoursePage />}></Route>
           <Route path='createcategory' element={<CreateCategoryPage />}></Route>
           <Route path='updatecategory' element={<UpdateCategoryPage />}></Route>
+          <Route path='categorycourse' element={<AllcourseCategoryPage />}></Route>
+          <Route path='studentview' element={<Studentview />}></Route>
 
           
 
