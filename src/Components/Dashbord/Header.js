@@ -13,10 +13,26 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserTie,faUser } from '@fortawesome/free-solid-svg-icons'
 import {GoThreeBars} from 'react-icons/go'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { logoutApi } from "../../Store/Login/useApi";
+import { useDispatch, useSelector } from "react-redux";
+
 
 function Header() {
+   const navigate =useNavigate();
+   const dispatch =useDispatch();
+
+   const {   profileDetails } = useSelector((state) => ({
+    profileDetails:state.ProfileReducer.profileDetails,
+}));
    
+  
+
+
+   const handleLogout =() =>{
+      dispatch(logoutApi(navigate));
+   }
+
   return (
     <div>
       <Navbar
@@ -48,7 +64,7 @@ function Header() {
             <FontAwesomeIcon className="usericon" icon={faUser} />
             <NavDropdown
               id="nav-dropdown-dark-example"
-              title="AJ"
+              title={profileDetails.username}
               menuVariant="dark"
               
             >
@@ -56,7 +72,10 @@ function Header() {
               <NavDropdown.Item href="#action/3.2">
                 Settings
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3" style={{color:'red'}}>Logout</NavDropdown.Item>
+              <NavDropdown.Item  style={{color:'red'}} onClick={ handleLogout}>
+                
+                
+                Logout</NavDropdown.Item>
               <NavDropdown.Divider />
              
             </NavDropdown>

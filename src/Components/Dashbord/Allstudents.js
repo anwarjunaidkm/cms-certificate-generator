@@ -1,9 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {Container,Table,Pagination,PaginationItem,PaginationLink} from 'reactstrap'
 import "./Allstudents.css"
 import {BiSearchAlt} from 'react-icons/bi'
+import { useDispatch,useSelector} from 'react-redux'
+import { studentApi } from "../../Store/Student/useApi";
+import { map } from 'lodash'
+
+
 
 const Allstudents = () => {
+  const dispatch=useDispatch()
+
+  const {   allstudent } = useSelector((state) => ({
+    allstudent:state.StudentReducer.allstudent,
+}));
+
+
+  useEffect(()=>{
+    dispatch(studentApi())
+  },[])
+
+  const tableData =allstudent?.results;
+
+ 
+// console.log(allstudent);
+
   return (
     <section className="allstudent-section">
       <h5 style={{ paddingLeft: "14px", paddingTop: "15px" }}>STUDENTS</h5>
@@ -48,200 +69,30 @@ const Allstudents = () => {
               </tr>
             </thead>
             <tbody style={{ fontSize: "12px", color: "gray" }}>
-              <tr>
-                <th scope="row">1</th>
-                <td>Anwarjunaid km</td>
-                <td>9746639178</td>
-                <td>ajvly@gmail.com</td>
-                <td>19 Jan, 2022</td>
-                <td>07 May, 2022</td>
-                <td>Developer</td>
-                <td>
-                  <img src="" alt="eror" />
-                </td>
-                <td>view</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Anwarjunaid km</td>
-                <td>9746639178</td>
-                <td>ajvly@gmail.com</td>
-                <td>19 Jan, 2022</td>
-                <td>07 May, 2022</td>
-                <td>Developer</td>
-                <td>
-                  <img src="" alt="eror" />
-                </td>
-                <td>view</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
+              {map(tableData,(item,key)=>(
 
-                <td>Anwarjunaid km</td>
-                <td>9746639178</td>
-                <td>ajvly@gmail.com</td>
-                <td>19 Jan, 2022</td>
-                <td>07 May, 2022</td>
-                <td>Developer</td>
-                <td>
-                  <img src="" alt="eror" />
-                </td>
-                <td>view</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
 
-                <td>Anwarjunaid km</td>
-                <td>9746639178</td>
-                <td>ajvly@gmail.com</td>
-                <td>19 Jan, 2022</td>
-                <td>07 May, 2022</td>
-                <td>Developer</td>
+                  <tr key={key}>
+                <th scope="row">{key +1}</th>
+                <td>{item?.full_name}</td>
+                <td>{item?.phone}</td>
+                <td>{item?.email}</td>
+                <td>{item?.start_date}</td>
+                <td>{item?.dob}</td>
+                <td>{item?.designation}</td>
                 <td>
                   <img src="" alt="eror" />
                 </td>
                 <td>view</td>
               </tr>
-              <tr>
-                <th scope="row">3</th>
 
-                <td>Anwarjunaid km</td>
-                <td>9746639178</td>
-                <td>ajvly@gmail.com</td>
-                <td>19 Jan, 2022</td>
-                <td>07 May, 2022</td>
-                <td>Developer</td>
-                <td>
-                  <img src="" alt="eror" />
-                </td>
-                <td>view</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-
-                <td>Anwarjunaid km</td>
-                <td>9746639178</td>
-                <td>ajvly@gmail.com</td>
-                <td>19 Jan, 2022</td>
-                <td>07 May, 2022</td>
-                <td>Developer</td>
-                <td>
-                  <img src="" alt="eror" />
-                </td>
-                <td>view</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-
-                <td>Anwarjunaid km</td>
-                <td>9746639178</td>
-                <td>ajvly@gmail.com</td>
-                <td>19 Jan, 2022</td>
-                <td>07 May, 2022</td>
-                <td>Developer</td>
-                <td>
-                  <img src="" alt="eror" />
-                </td>
-                <td>view</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-
-                <td>Anwarjunaid km</td>
-                <td>9746639178</td>
-                <td>ajvly@gmail.com</td>
-                <td>19 Jan, 2022</td>
-                <td>07 May, 2022</td>
-                <td>Developer</td>
-                <td>
-                  <img src="" alt="eror" />
-                </td>
-                <td>view</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-
-                <td>Anwarjunaid km</td>
-                <td>9746639178</td>
-                <td>ajvly@gmail.com</td>
-                <td>19 Jan, 2022</td>
-                <td>07 May, 2022</td>
-                <td>Developer</td>
-                <td>
-                  <img src="" alt="eror" />
-                </td>
-                <td>view</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-
-                <td>Anwarjunaid km</td>
-                <td>9746639178</td>
-                <td>ajvly@gmail.com</td>
-                <td>19 Jan, 2022</td>
-                <td>07 May, 2022</td>
-                <td>Developer</td>
-                <td>
-                  <img src="" alt="eror" />
-                </td>
-                <td>view</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-
-                <td>Anwarjunaid km</td>
-                <td>9746639178</td>
-                <td>ajvly@gmail.com</td>
-                <td>19 Jan, 2022</td>
-                <td>07 May, 2022</td>
-                <td>Developer</td>
-                <td>
-                  <img src="" alt="eror" />
-                </td>
-                <td>view</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-
-                <td>Anwarjunaid km</td>
-                <td>9746639178</td>
-                <td>ajvly@gmail.com</td>
-                <td>19 Jan, 2022</td>
-                <td>07 May, 2022</td>
-                <td>Developer</td>
-                <td>
-                  <img src="" alt="eror" />
-                </td>
-                <td>view</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-
-                <td>Anwarjunaid km</td>
-                <td>9746639178</td>
-                <td>ajvly@gmail.com</td>
-                <td>19 Jan, 2022</td>
-                <td>07 May, 2022</td>
-                <td>Developer</td>
-                <td>
-                  <img src="" alt="eror" />
-                </td>
-                <td>view</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-
-                <td>Anwarjunaid km</td>
-                <td>9746639178</td>
-                <td>ajvly@gmail.com</td>
-                <td>19 Jan, 2022</td>
-                <td>07 May, 2022</td>
-                <td>Developer</td>
-                <td>
-                  <img src="" alt="eror" />
-                </td>
-                <td>view</td>
-              </tr>
+              ))}
+              
+              
+             
+             
+              
+              
             </tbody>
           </Table>
           <div className="pageno">

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Layout from '../Layout'
 import './Banner.css'
 // import {Card, Row,Col,Button,CardTitle,CardText} from 'react-bootstrap'
@@ -9,11 +9,27 @@ import icon1 from '../Dashbord/icon1.png'
 import icon2 from '../Dashbord/icon2.png'
 import icon3 from '../Dashbord/icon3.png'
 import { Container } from 'react-bootstrap'
+import { useDispatch,useSelector} from 'react-redux'
+import { profileApi } from '../../Store/Login/useApi'
 
 
 
 
-function Banner() {
+function Banner() { 
+    const dispatch=useDispatch()
+
+    useEffect(() => {
+      dispatch(profileApi())
+    
+      
+    }, [])
+    
+    const {   profileDetails } = useSelector((state) => ({
+        profileDetails:state.ProfileReducer.profileDetails,
+    }));
+
+console.log(profileDetails);
+    
   return (
   <>  
   <div className='banner-container'>
@@ -43,8 +59,8 @@ function Banner() {
                                     <div className='card-avatar'>
                                     <img className='avatar' src={avatar} alt="error" />
                                     </div>
-                                    <h6>Cynthia Price</h6>
-                                    <p>UI/UX Designer</p>
+                                    <h6>{profileDetails.full_name}</h6>
+                                    <p>{profileDetails.email}</p>
 
                                 </Col>
                                 <Col md='4'>
