@@ -43,7 +43,7 @@ function App() {
           <Route path='createcategory' element={<CreateCategoryPage />}></Route>
           <Route path='updatecategory' element={<UpdateCategoryPage />}></Route>
           <Route path='categorycourse' element={<AllcourseCategoryPage />}></Route>
-          <Route path='studentview' element={<Studentview />}></Route>
+          <Route path='studentview/:id' element={<Studentview />}></Route>
 
           
 

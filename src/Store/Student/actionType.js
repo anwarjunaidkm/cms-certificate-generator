@@ -10,3 +10,12 @@ export const STUDENT_SUCCESS ="STUDENT_SUCCESS";
 export const STUDENT_FAIL ="STUDENT_FAIL"
 
 
+// -------------single view-----------------
+
+export const SINGLE_VIEW_REQUEST ="SINGLE_VIEW_REQUEST";
+export const SINGLE_VIEW_SUCCESS ="SINGLE_VIEW_SUCCESS";
+export const SINGLE_VIEW_FAIL ="SINGLE_VIEW_FAIL"
+
+
+
+

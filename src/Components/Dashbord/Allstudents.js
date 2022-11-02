@@ -2,9 +2,11 @@ import React, { useEffect } from "react";
 import {Container,Table,Pagination,PaginationItem,PaginationLink} from 'reactstrap'
 import "./Allstudents.css"
 import {BiSearchAlt} from 'react-icons/bi'
+import {BsFillEyeFill} from 'react-icons/bs'
 import { useDispatch,useSelector} from 'react-redux'
 import { studentApi } from "../../Store/Student/useApi";
 import { map } from 'lodash'
+import { Link } from "react-router-dom";
 
 
 
@@ -56,19 +58,15 @@ const Allstudents = () => {
 
           <Table className="allstudents-table" responsive size="sm">
             <thead>
-              <tr style={{ fontSize: "12px" }}>
+              <tr style={{ fontSize: "15 px" }}>
                 <th>ID</th>
                 <th>Name</th>
                 <th>Phone</th>
                 <th>Email</th>
-                <th>Joining Date</th>
-                <th>DOB</th>
-                <th>Designation</th>
-                <th>Photo</th>
-                <th>Action</th>
+                
               </tr>
             </thead>
-            <tbody style={{ fontSize: "12px", color: "gray" }}>
+            <tbody style={{ fontSize: "18px", color: "gray" }}>
               {map(tableData,(item,key)=>(
 
 
@@ -77,13 +75,8 @@ const Allstudents = () => {
                 <td>{item?.full_name}</td>
                 <td>{item?.phone}</td>
                 <td>{item?.email}</td>
-                <td>{item?.start_date}</td>
-                <td>{item?.dob}</td>
-                <td>{item?.designation}</td>
-                <td>
-                  <img src="" alt="eror" />
-                </td>
-                <td>view</td>
+                
+                <td><Link to={`/studentview/${item?.id}`}> <BsFillEyeFill /></Link></td>
               </tr>
 
               ))}

@@ -1,10 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Layout from '../Layout'
 import {Container,Button,Table,Pagination,PaginationItem,PaginationLink ,Card, Col,Row,Input} from 'reactstrap'
 import './Studentview.css'
 import pro from '../Dashbord/pro.jpg'
+import { useDispatch,useSelector} from 'react-redux'
+import { singleviewApi } from '../../Store/Student/useApi'
+import { useParams } from "react-router-dom";
+
+
 
 const Studentview = () => {
+  const dispatch=useDispatch()
+  const params =useParams()
+  const {   single } = useSelector((state) => ({
+    single:state.StudentReducer.singleview,
+}));
+console.log(single);
+
+
+  useEffect(()=>{
+    dispatch(singleviewApi(params.id))
+
+  },[]);
+
   return (
     <Layout>
       <section className="student-view-section">
@@ -16,12 +34,13 @@ const Studentview = () => {
             <Row>
               <Col md="6">
                 <h3 style={{ color: "rgb(97 91 91)", fontSize: "20px" }}>
-                  ANWAR JUNAID KM
+                  {single.full_name}
                 </h3>
-                <p style={{ color: "gray", marginBottom: "0" }}>13/23/1998</p>
-                <p style={{ color: "gray" }}>
-                  Choloor, Kodur Post - 676504, Malappuram, Kerala.9846643245
-                </p>
+                <p style={{ color: "gray", marginBottom: "0" }}> Joining Date : {single.start_date}</p>
+                <p style={{ color: "gray", marginBottom: "0" }}>Date of Leaving : {single.end_date}</p>
+                <p style={{ color: "gray",marginBottom:"0" }}>  {single.address} </p>
+
+               
               </Col>
               <Col md="6">
                 <div>
@@ -31,18 +50,26 @@ const Studentview = () => {
                     alt=""
                   />
                 </div>
+                <p style={{ color: "gray" ,paddingTop:'10px',marginBottom:"0" }}> {single.designation}</p>
+                <p style={{ color: "gray", marginBottom: "0" }}>Dob : {single.dob}</p>
+
+                
+
               </Col>
             </Row>
             <Row>
               <Col md="12">
                 <div>
-                  <h5 style={{ color: "rgb(97 91 91)", fontSize: "20px" }}>
+                  <h5 style={{ color: "rgb(97 91 91)", fontSize: "18px" }}>
                     Contact Details :
                   </h5>
                   <p style={{ color: "gray", marginBottom: "0" }}>
-                    Email : lorem@gmail.com{" "}
+                    Email : {single.email}
                   </p>
-                  <p style={{ color: "gray" }}>Mobile : 123456789 </p>
+                  <p style={{ color: "gray" }}>Mobile : {single.phone}</p>
+                 
+                 
+                
                 </div>
               </Col>
             </Row>
