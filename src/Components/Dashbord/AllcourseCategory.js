@@ -1,37 +1,48 @@
 import React, { useEffect } from 'react'
 import './AllcourseCategory.css'
-import {Container,Table,Pagination,PaginationItem,PaginationLink} from 'reactstrap'
+import {Container,Table,Pagination,PaginationItem,PaginationLink, Row, Col} from 'reactstrap'
 import {RiCloseFill} from 'react-icons/ri'
 import {BiPencil} from 'react-icons/bi'
 import {BsFillEyeFill} from 'react-icons/bs'
 import {ImCross} from 'react-icons/im'
 import {FaPen} from 'react-icons/fa'
+import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
+
 
 import { Link ,useNavigate,useParams} from 'react-router-dom'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { allcoursecategoryApi, deleteCategoryApi } from '../../Store/Category/useApi'
-import { map } from 'lodash'
+import { map ,range} from 'lodash'
+import { useState } from 'react'
 
 
 const AllcourseCategory = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [pages, setPages] = useState(1);
+
+  const { allcategory,count } = useSelector((state) => ({
+    allcategory: state.CategoryReducer.allcoursecategory,
+    count: state.CategoryReducer.allcoursecategory.count,
+  }));
+  const totalPages = Math.round(count / 10);
+  const pageArray = range(1, totalPages + 1);
 
   const params=useParams()
   const deletecategoryHandle =(id)=>{
     dispatch(deleteCategoryApi(id))
 
   }
-  const { allcategory } = useSelector((state) => ({
-    allcategory: state.CategoryReducer.allcoursecategory,
-  }));
+console.log(count);
+
+
 
   useEffect(() => {
-    dispatch(allcoursecategoryApi());
-  }, [dispatch]);
+    dispatch(allcoursecategoryApi(pages));
+  }, [dispatch,pages]);
   const courseTable = allcategory?.results;
-  console.log(courseTable);
+  // console.log(courseTable);
 
 
   return (
@@ -87,32 +98,27 @@ const AllcourseCategory = () => {
           </Table>
 
           <div className="pageno">
-            <Pagination
-              className="pagemain"
-              aria-label="Page navigation example"
-            >
-              <PaginationItem disabled>
-                <PaginationLink className="page-link" href="#" previous />
-              </PaginationItem>
-              <PaginationItem disabled>
-                <PaginationLink href="#">1</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#">2</PaginationLink>
-              </PaginationItem>
-              <PaginationItem active>
-                <PaginationLink href="#">3</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#">4</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#">5</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#" next />
-              </PaginationItem>
-            </Pagination>
+          <Row>
+              <Col>
+                <AiOutlineArrowLeft onClick={() => setPages(pages-1)} />
+              </Col>
+              {map(pageArray, (page) => (
+                <Col
+                className={pages === page && "active"}
+                onClick={() => setPages(page)}
+                
+                // {console.log(page)}
+                  >
+                    {page}
+                  </Col>
+                    ))}
+
+              <Col>
+                <AiOutlineArrowRight 
+                onClick={() => setPages(pages+1)} />
+              </Col>
+            </Row>
+            
           </div>
         </div>
       </Container>

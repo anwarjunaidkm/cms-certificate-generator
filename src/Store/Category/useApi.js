@@ -27,13 +27,13 @@ export const createcourseCategoryApi = (input,navigate) => {
 //   -------all courese categoruuyyyyyyyy----------
 
 
-export const allcoursecategoryApi = () => {
+export const allcoursecategoryApi = (page) => {
 
    
   return async (dispatch) => {
     dispatch(allcoursecategoryRequest());
     try {
-      const res = await axiosApi.get(`/course/course_category/`);
+      const res = await axiosApi.get(`/course/course_category/?page=${page?page:1 }`);
       if (res) {
         dispatch(allcoursecategorySuccess(res.data));
       }
