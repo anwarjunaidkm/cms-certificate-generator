@@ -1,9 +1,55 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './UpdateCategory.css'
 import {Container,Table,Button, Row,Col, Form ,Input,Label,FormGroup,Dropdown,DropdownItem,DropdownMenu,DropdownToggle} from 'reactstrap'
+import { useNavigate, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { singlecategoryApi, updatecategoryApi } from '../../Store/Category/useApi';
 
 
 const UpdateCategory = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const params=useParams()
+  const [store, setStore] = useState  ({});
+  const catId = params.id;
+
+
+  const {   singlecategory  } = useSelector((state) => ({
+    singlecategory:state.CategoryReducer.singlecategory,
+   
+}));
+
+console.log(singlecategory);
+
+  useEffect(()=>{
+    dispatch(singlecategoryApi(params.id))
+  },[]);
+  useEffect(() => {
+    setStore(singlecategory);
+  }, [singlecategory]);
+
+  const Handle = (e)=>{
+    setStore({
+      ...store,
+      [e.target.name]:e.target.value
+    })
+  }
+  
+   const handleUpdate =(e) =>{
+    e.preventDefault();
+    dispatch(updatecategoryApi(catId,store,navigate));
+
+
+
+   }
+
+
+
+
+  
+
+
+
   return (
     <section className='updateCategory-section'>
          <h5 style={{ paddingLeft: "170px", paddingTop: "15px" }}>
@@ -14,7 +60,7 @@ const UpdateCategory = () => {
 
 
         <div>
-            <Form style={{ padding: "18px" }}>
+            <Form  onSubmit={(e)=>handleUpdate(e)} style={{ padding: "18px" }}>
               <Row style={{height:'400px'}}>
                 <Col md={6}>
                   <FormGroup>
@@ -31,6 +77,9 @@ const UpdateCategory = () => {
                       style={{ backgroundColor: "#c5c1c1d7" }}
                       placeholder='Enter a course Category'
                       type="text"
+                      value={store?.course_category_name}
+                      name="course_category_name"
+                      onChange={(e) => Handle(e)}
                     />
                   </FormGroup>
                   <FormGroup>
@@ -47,6 +96,11 @@ const UpdateCategory = () => {
                       style={{ backgroundColor: "#c5c1c1d7" }}
                       type="text"
                       placeholder='Enter a designation'
+                      value={store?.designation}
+                      name="designation"
+                      onChange={(e) => Handle(e)}
+
+
                     />
                   </FormGroup>
                  
@@ -56,10 +110,7 @@ const UpdateCategory = () => {
                
 
               </Row>
-              
-            </Form>
-          </div>
-          <div
+              <div
                 style={{
                   display: "flex",
                   justifyContent: "flex-end",
@@ -82,11 +133,16 @@ const UpdateCategory = () => {
                     className="update-btn-course-update"
                     color="primary"
                     size=""
+                    type='submit'
                   >
                     Update
                   </Button>
                 </div>
               </div>
+              
+            </Form>
+          </div>
+          
 
         </div>
     </Container>

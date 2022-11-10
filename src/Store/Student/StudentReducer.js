@@ -8,6 +8,12 @@ import {
   SINGLE_VIEW_REQUEST,
   SINGLE_VIEW_SUCCESS,
   SINGLE_VIEW_FAIL,
+  DELETE_STUDENT_REQUEST,
+  DELETE_STUDENT_SUCCESS,
+  DELETE_STUDENT_FAIL,
+  UPDATE_STUDENT_REQUEST,
+  UPDATE_STUDENT_SUCCESS,
+  UPDATE_STUDENT_FAIL,
 } from "./actionType";
 
 const initiailState = {
@@ -16,6 +22,8 @@ const initiailState = {
   studentDetails: [],
   allstudent: [],
   singleview: {},
+  deleteStudent:{},
+  updateStudent:{}
 };
 const StudentReducer = (state = initiailState, action) => {
   switch (action.type) {
@@ -79,6 +87,47 @@ const StudentReducer = (state = initiailState, action) => {
 
         error: action.payload,
       };
+      //-----delete student---------------
+
+      case DELETE_STUDENT_REQUEST:
+        return {
+          ...state,
+          loading: true,
+        };
+      case DELETE_STUDENT_SUCCESS:
+        return {
+          ...state,
+          loading: false,
+          deleteStudent: action.payload,
+          error: "",
+        };
+      case DELETE_STUDENT_FAIL:
+        return {
+          ...state,
+          loading: false,
+  
+          error: action.payload,
+        };
+      //-------------update student----------------
+      case UPDATE_STUDENT_REQUEST:
+        return {
+          ...state,
+          loading: true,
+        };
+      case UPDATE_STUDENT_SUCCESS:
+        return {
+          ...state,
+          loading: false,
+          updateStudent: action.payload,
+        };
+      case UPDATE_STUDENT_FAIL:
+        return {
+          ...state,
+          loading: false,
+  
+          error: action.payload,
+        };
+
 
     default:
       return state;

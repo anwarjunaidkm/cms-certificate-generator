@@ -1,8 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import {Container,Table,Button, Row,Col, Form ,Input,Label,FormGroup,Dropdown,DropdownItem,DropdownMenu,DropdownToggle} from 'reactstrap'
+import { createcourseCategoryApi } from '../../Store/Category/useApi'
 
 
 function CreateCategory() {
+
+  const dispatch=useDispatch()
+  const navigate=useNavigate()
+  const[input,setInput]=useState()
+  
+
+  const createCoursehandler =(e)=>{
+    e.preventDefault()
+    if(input){
+      dispatch(createcourseCategoryApi(input,navigate))
+      console.log(input);
+    }
+
+
+  }
+
+
+
+
+
+
+
   return (
     <section className='updateCategory-section'>
          <h5 style={{ paddingLeft: "170px", paddingTop: "15px" }}>
@@ -13,7 +38,7 @@ function CreateCategory() {
 
 
         <div>
-            <Form style={{ padding: "18px" }}>
+            <Form onSubmit={createCoursehandler} style={{ padding: "18px" }}>
               <Row style={{height:'400px'}}>
                 <Col md={6}>
                   <FormGroup>
@@ -28,9 +53,11 @@ function CreateCategory() {
                     </Label>
                     <Input
                       style={{ backgroundColor: "#c5c1c1d7" }}
+                      name="course_category_name"
                     
                       type="text"
                       placeholder='Enter a course Category'
+                      onChange={(e)=>setInput({...input,course_category_name:e.target.value})}
                     />
                   </FormGroup>
                   <FormGroup>
@@ -47,6 +74,8 @@ function CreateCategory() {
                       style={{ backgroundColor: "#c5c1c1d7" }}
                       type="text"
                       placeholder='Enter a designation'
+                      name='designation'
+                      onChange={(e)=>setInput({...input,designation:e.target.value})}
                     />
                   </FormGroup>
                  
@@ -56,10 +85,8 @@ function CreateCategory() {
                
 
               </Row>
-              
-            </Form>
-          </div>
-          <div
+
+              <div
                 style={{
                   display: "flex",
                   justifyContent: "flex-end",
@@ -81,12 +108,17 @@ function CreateCategory() {
                   <Button
                     className="update-btn-course-update"
                     color="primary"
-                    size=""
+                    
+                    type="submit"
                   >
                     Create
                   </Button>
                 </div>
               </div>
+              
+            </Form>
+          </div>
+          
 
         </div>
     </Container>

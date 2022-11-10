@@ -4,24 +4,33 @@ import {Container,Button,Table,Pagination,PaginationItem,PaginationLink ,Card, C
 import './Studentview.css'
 import pro from '../Dashbord/pro.jpg'
 import { useDispatch,useSelector} from 'react-redux'
-import { singleviewApi } from '../../Store/Student/useApi'
-import { useParams } from "react-router-dom";
+import { deleteStudentApi, singleviewApi } from '../../Store/Student/useApi'
+import { Link, useNavigate, useParams } from "react-router-dom";
+import {AiOutlineMail,AiOutlinePhone } from 'react-icons/ai'
+import {GrLocationPin } from 'react-icons/gr'
+import {BsCalendarDate } from 'react-icons/bs'
+
 
 
 
 const Studentview = () => {
   const dispatch=useDispatch()
+  const navigate=useNavigate()
   const params =useParams()
-  const {   single } = useSelector((state) => ({
+  const {   single ,deletes } = useSelector((state) => ({
     single:state.StudentReducer.singleview,
+    deletes:state.StudentReducer.deleteStudent,
 }));
-console.log(single);
 
 
   useEffect(()=>{
     dispatch(singleviewApi(params.id))
 
   },[]);
+
+  const deleteStudentHandler = () => {
+    dispatch(deleteStudentApi(params.id, navigate));
+  };
 
   return (
     <Layout>
@@ -36,9 +45,9 @@ console.log(single);
                 <h3 style={{ color: "rgb(97 91 91)", fontSize: "20px" }}>
                   {single.full_name}
                 </h3>
-                <p style={{ color: "gray", marginBottom: "0" }}> Joining Date : {single.start_date}</p>
-                <p style={{ color: "gray", marginBottom: "0" }}>Date of Leaving : {single.end_date}</p>
-                <p style={{ color: "gray",marginBottom:"0" }}>  {single.address} </p>
+                <p style={{ color: "gray", marginBottom: "0" }}> <span style={{color:"black"}}>Joining Date : </span> {single.start_date}</p>
+                <p style={{ color: "gray", marginBottom: "0" }}> <span style={{color:"black"}}>Date of Leaving : </span>  {single.end_date}</p>
+                <p style={{ color: "gray",marginBottom:"0" }}> <GrLocationPin /> {single.address} </p>
 
                
               </Col>
@@ -51,7 +60,7 @@ console.log(single);
                   />
                 </div>
                 <p style={{ color: "gray" ,paddingTop:'10px',marginBottom:"0" }}> {single.designation}</p>
-                <p style={{ color: "gray", marginBottom: "0" }}>Dob : {single.dob}</p>
+                <p style={{ color: "gray", marginBottom: "0" }}> <span style={{color:"black"}}> <BsCalendarDate /> </span> {single.dob}</p>
 
                 
 
@@ -64,9 +73,10 @@ console.log(single);
                     Contact Details :
                   </h5>
                   <p style={{ color: "gray", marginBottom: "0" }}>
-                    Email : {single.email}
+                  <span style={{color:"black"}}> <AiOutlineMail />  </span> : {single.email}
                   </p>
-                  <p style={{ color: "gray" }}>Mobile : {single.phone}</p>
+                     <p style={{ color: "gray" }}>
+                     <span style={{color:"black"}}><AiOutlinePhone /> :</span> {single.phone}</p>
                  
                  
                 
@@ -87,12 +97,15 @@ console.log(single);
                   className="back-btn-course-update "
                   color=""
                   size=""
+                  onClick={deleteStudentHandler}
                 >
                   Delete
                 </Button>
               </div>
               <div>
+              
                 <Button
+                onClick={()=> navigate(`/updatestudent/${params.id}`)}
                   className="update-btn-course-update"
                   color="primary"
                   size=""

@@ -20,6 +20,7 @@ import Studentview from './Components/Dashbord/Studentview';
 
 
 
+
 function App() {
   // const token = sessionStorage.getItem("token")
   return (
@@ -35,15 +36,16 @@ function App() {
           <Route path='login' element={<Login />}></Route>
           <Route path='dashbord' element={<Dashbord />}></Route>
           <Route path='allstudents' element={<AllstudentsPage />}></Route>
-          <Route path='updatestudent' element={<UpdateStudentPage />}></Route>
+          <Route path='updatestudent/:id' element={<UpdateStudentPage />}></Route>
           <Route path='createstudent' element={<CreateStudentPage />}></Route>
           <Route path='allcourses' element={<AllcoursesPage />}></Route>
           <Route path='updatecourses' element={<UpdateCoursesPage />}></Route>
           <Route path='createcourses' element={<CreateCoursePage />}></Route>
           <Route path='createcategory' element={<CreateCategoryPage />}></Route>
-          <Route path='updatecategory' element={<UpdateCategoryPage />}></Route>
+          <Route path='updatecategory/:id' element={<UpdateCategoryPage />}></Route>
           <Route path='categorycourse' element={<AllcourseCategoryPage />}></Route>
           <Route path='studentview/:id' element={<Studentview />}></Route>
+         
 
           
 

@@ -1,31 +1,41 @@
-import React, { useEffect } from "react";
-import {Container,Table,Pagination,PaginationItem,PaginationLink} from 'reactstrap'
-import "./Allstudents.css"
-import {BiSearchAlt} from 'react-icons/bi'
-import {BsFillEyeFill} from 'react-icons/bs'
-import { useDispatch,useSelector} from 'react-redux'
+import React, { useEffect, useState } from "react";
+import {
+  Container,
+  Table,
+  Pagination,
+  PaginationItem,
+  PaginationLink,
+  Col,
+  Row,
+} from "reactstrap";
+import "./Allstudents.css";
+import { BiSearchAlt } from "react-icons/bi";
+import { BsFillEyeFill } from "react-icons/bs";
+import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux";
 import { studentApi } from "../../Store/Student/useApi";
-import { map } from 'lodash'
+import { map, range } from "lodash";
 import { Link } from "react-router-dom";
 
-
-
 const Allstudents = () => {
-  const dispatch=useDispatch()
+  const dispatch = useDispatch();
 
-  const {   allstudent } = useSelector((state) => ({
-    allstudent:state.StudentReducer.allstudent,
-}));
+  const [pages, setPages] = useState(1);
 
+  const { count, allstudent } = useSelector((state) => ({
+    allstudent: state.StudentReducer.allstudent,
+    count: state.StudentReducer.allstudent.count,
+  }));
+  // console.log(count);
 
-  useEffect(()=>{
-    dispatch(studentApi())
-  },[])
+  useEffect(() => {
+    dispatch(studentApi(pages));
+  }, [dispatch, pages]); 
 
-  const tableData =allstudent?.results;
-
- 
-// console.log(allstudent);
+  const tableData = allstudent?.results;
+  const totalPages = Math.round(count / 10);
+  const pageArray = range(1, totalPages + 1);
+  // console.log(pageArray);
 
   return (
     <section className="allstudent-section">
@@ -63,58 +73,49 @@ const Allstudents = () => {
                 <th>Name</th>
                 <th>Phone</th>
                 <th>Email</th>
-                
               </tr>
             </thead>
             <tbody style={{ fontSize: "18px", color: "gray" }}>
-              {map(tableData,(item,key)=>(
+              {map(tableData, (item, key) => (
+                <tr key={key}>
+                  <th scope="row">{key + 1}</th>
+                  <td>{item?.full_name}</td>
+                  <td>{item?.phone}</td>
+                  <td>{item?.email}</td>
 
-
-                  <tr key={key}>
-                <th scope="row">{key +1}</th>
-                <td>{item?.full_name}</td>
-                <td>{item?.phone}</td>
-                <td>{item?.email}</td>
-                
-                <td><Link to={`/studentview/${item?.id}`}> <BsFillEyeFill /></Link></td>
-              </tr>
-
+                  <td>
+                    <Link to={`/studentview/${item?.id}`}>
+                      {" "}
+                      <BsFillEyeFill />
+                    </Link>
+                  </td>
+                </tr>
               ))}
-              
-              
-             
-             
-              
-              
             </tbody>
           </Table>
           <div className="pageno">
-            <Pagination
-              className="pagemain"
-              aria-label="Page navigation example"
-            >
-              <PaginationItem disabled>
-                <PaginationLink className="page-link" href="#" previous />
-              </PaginationItem>
-              <PaginationItem disabled>
-                <PaginationLink href="#">1</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#">2</PaginationLink>
-              </PaginationItem>
-              <PaginationItem active>
-                <PaginationLink href="#">3</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#">4</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#">5</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="#" next />
-              </PaginationItem>
-            </Pagination>
+           
+
+            <Row>
+              <Col>
+                <AiOutlineArrowLeft onClick={() => setPages(pages-1)} />
+              </Col>
+              {map(pageArray, (page) => (
+                <Col style={{cursor:"pointer"}}
+                className={pages === page && "active"}
+                onClick={() => setPages(page)}
+                
+                // {console.log(page)}
+                  >
+                    {page}
+                  </Col>
+                    ))}
+
+              <Col>
+                <AiOutlineArrowRight 
+                onClick={() => setPages(pages+1)} />
+              </Col>
+            </Row>
           </div>
         </div>
       </Container>

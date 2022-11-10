@@ -65,7 +65,7 @@ const CreateStudent = () => {
                         onChange={(e)=>setInput({...input,full_name: e.target.value})}
                       />
                     </FormGroup>
-                  </Col>
+                  </Col> 
                   <Col md={6}>
                     <FormGroup>
                       <Label
