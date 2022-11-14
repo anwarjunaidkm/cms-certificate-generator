@@ -1,8 +1,37 @@
-import React from 'react'
+import { map } from 'lodash';
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import {Container,Table,Button, Row,Col, Form ,Input,Label,FormGroup,Dropdown,DropdownItem,DropdownMenu,DropdownToggle} from 'reactstrap'
+import { allcoursecategoryApi } from '../../Store/Category/useApi';
+import { createcourseApi } from '../../Store/Course/useApi';
 
 
 const CreateCourse = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [input, setInput] = useState({});
+
+  const CreateCourse = (e) => {
+    e.preventDefault();
+    if (input) {
+      dispatch(createcourseApi(input, navigate));
+    }
+  };
+  // console.log(input);
+  const { allcategory } = useSelector((state) => ({
+    allcategory: state.CategoryReducer.allcoursecategory,
+   
+  }));
+  const courseTable=allcategory.results;
+  console.log(courseTable);
+
+  useEffect(() => {
+    dispatch(allcoursecategoryApi())
+   
+  }, [])
+  
+
   return (
     <section className="updateCourses-sectioin">
       <h5 style={{ paddingLeft: "170px", paddingTop: "15px" }}>
@@ -12,8 +41,8 @@ const CreateCourse = () => {
       <Container className="container-updatecourse">
         <div className="updateCourse-box">
           <div>
-            <Form style={{ padding: "18px" }}>
-              <Row style={{height:'400px'}}>
+            <Form onSubmit={CreateCourse} style={{ padding: "18px" }}>
+              <Row style={{ height: "400px" }}>
                 <Col md={6}>
                   <FormGroup>
                     <Label
@@ -27,8 +56,12 @@ const CreateCourse = () => {
                     </Label>
                     <Input
                       style={{ backgroundColor: "#c5c1c1d7" }}
-                      placeholder="React js"
+                      placeholder="Course name"
                       type="text"
+                      name="course_name"
+                      onChange={(e) =>
+                        setInput({ ...input, course_name: e.target.value })
+                      }
                     />
                   </FormGroup>
                   <FormGroup>
@@ -43,8 +76,12 @@ const CreateCourse = () => {
                     </Label>
                     <Input
                       style={{ backgroundColor: "#c5c1c1d7" }}
-                      placeholder="3 month"
+                      placeholder="Duration"
                       type="text"
+                      name="duration"
+                      onChange={(e) =>
+                        setInput({ ...input, duration: e.target.value })
+                      }
                     />
                   </FormGroup>
                   <FormGroup>
@@ -61,32 +98,30 @@ const CreateCourse = () => {
                       <select
                         className="select-update"
                         style={{ width: "100%" }}
+                        onChange={(e) =>
+                          setInput({
+                            ...input,
+                            course_category: e.target.value,
+                          })
+                        }
                       >
-                        <option
-                          style={{ backgroundColor: "" }}
-                          value="Front-end"
-                        >
-                          Front-end
-                        </option>
-                        <option value="Back-end">Back-end</option>
+                        <option style={{ backgroundColor: "" }}>Choose</option>
+                        {map(courseTable, (item, key) => (
+                          <option value={item.id}>
+                            {item.course_category_name}
+                          </option>
+                        ))}
                       </select>
                     </div>
                   </FormGroup>
-
-                  
                 </Col>
-               
-
               </Row>
-              
-            </Form>
-          </div>
-          <div
+              <div
                 style={{
                   display: "flex",
                   justifyContent: "flex-end",
                   paddingRight: "15px",
-                  alignItems:'end'
+                  alignItems: "end",
                 }}
               >
                 <div style={{ paddingRight: "15px" }}>
@@ -103,17 +138,18 @@ const CreateCourse = () => {
                   <Button
                     className="update-btn-course-update"
                     color="primary"
-                    size=""
+                    type="submit"
                   >
                     Create
                   </Button>
                 </div>
               </div>
+            </Form>
+          </div>
         </div>
-         
       </Container>
     </section>
-  )
-}
+  );
+};
 
 export default CreateCourse
