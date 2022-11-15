@@ -6,8 +6,9 @@ import {MdEdit} from 'react-icons/md'
 import {BiPencil} from 'react-icons/bi'
 import './Allcourses.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { allcourseApi } from '../../Store/Course/useApi'
+import { allcourseApi, deletecourseApi } from '../../Store/Course/useApi'
 import { map } from 'lodash'
+import { Link } from 'react-router-dom'
 function Allcourses() {
   const dispatch= useDispatch()
   const {  allcourses } = useSelector((state) => ({
@@ -22,6 +23,11 @@ function Allcourses() {
    const tableData = allcourses?.results;
    console.log(tableData);
 
+   const deletecourseHandler =(id)=>{
+    dispatch(deletecourseApi(id))
+
+   }
+
   
 
   return (
@@ -31,7 +37,7 @@ function Allcourses() {
         <div className="allcourses-box" style={{ padding: "15px" }}>
           <Table responsive>
             <thead>
-              <tr style={{ fontSize: "13px" }}>
+              <tr style={{ fontSize: "15px" }}>
                 <th>#</th>
                 {/* <th>ID</th> */}
                 <th>Course Name</th>
@@ -40,7 +46,7 @@ function Allcourses() {
                 <th>Action</th>
               </tr>
             </thead>
-            <tbody style={{ fontSize: "13px", color: "gray" }}>
+            <tbody style={{ fontSize: "18px", color: "gray" }}>
               {map(tableData, (item, key) => (
                 <tr key={key}>
                   <th scope="row">{key+1}</th>
@@ -56,7 +62,7 @@ function Allcourses() {
                         cursor: "pointer",
                       }}
                     >
-                      <BiPencil />
+                    <Link to={`/updatecourses/${item?.id}`}> <BiPencil /></Link> 
                     </div>
                     <div
                       style={{
@@ -65,7 +71,7 @@ function Allcourses() {
                         cursor: "pointer",
                       }}
                     >
-                      <RiCloseFill />
+                      <RiCloseFill onClick={()=>{deletecourseHandler(item?.id)}} />
                     </div>
                   </td>
                 </tr>

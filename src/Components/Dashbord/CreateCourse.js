@@ -1,7 +1,7 @@
 import { map } from 'lodash';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {Container,Table,Button, Row,Col, Form ,Input,Label,FormGroup,Dropdown,DropdownItem,DropdownMenu,DropdownToggle} from 'reactstrap'
 import { allcoursecategoryApi } from '../../Store/Category/useApi';
 import { createcourseApi } from '../../Store/Course/useApi';
@@ -125,7 +125,7 @@ const CreateCourse = () => {
                 }}
               >
                 <div style={{ paddingRight: "15px" }}>
-                  <Button
+           <Link to={"/allcourses"}>      <Button
                     style={{}}
                     className="back-btn-course-update"
                     color="secondary"
@@ -133,6 +133,7 @@ const CreateCourse = () => {
                   >
                     Back
                   </Button>
+                  </Link> 
                 </div>
                 <div>
                   <Button

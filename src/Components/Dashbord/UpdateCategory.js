@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './UpdateCategory.css'
 import {Container,Table,Button, Row,Col, Form ,Input,Label,FormGroup,Dropdown,DropdownItem,DropdownMenu,DropdownToggle} from 'reactstrap'
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { singlecategoryApi, updatecategoryApi } from '../../Store/Category/useApi';
 
@@ -19,7 +19,7 @@ const UpdateCategory = () => {
    
 }));
 
-console.log(singlecategory);
+// console.log(singlecategory);
 
   useEffect(()=>{
     dispatch(singlecategoryApi(params.id))
@@ -119,7 +119,7 @@ console.log(singlecategory);
                 }}
               >
                 <div style={{ paddingRight: "15px" }}>
-                  <Button
+          <Link to={"/categorycourse"}>       <Button
                     style={{}}
                     className="back-btn-course-update"
                     color="secondary"
@@ -127,6 +127,7 @@ console.log(singlecategory);
                   >
                     Back
                   </Button>
+                  </Link> 
                 </div>
                 <div>
                   <Button

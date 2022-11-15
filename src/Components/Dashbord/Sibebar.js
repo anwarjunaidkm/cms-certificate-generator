@@ -54,7 +54,7 @@ function Sibebar() {
            
                <li className='head-list'><a href="#"><i><FaBookReader /> </i>Courses</a></li>
                    <li className='sub-list'><Link to={"/allcourses"}>All Courses </Link></li>
-                    <li className='sub-list'><Link to={"/updatecourses"}>Update Courses</Link></li>
+                    {/* <li className='sub-list'><Link to={"/updatecourses"}>Update Courses</Link></li> */}
                     <li className='sub-list'><Link to={"/createcourses"}>Create Courses</Link></li>
 
                <li className='head-list'><Link to={"#"}><i><BiCategory /> </i>Courses Category</Link></li>
