@@ -24,7 +24,7 @@ const CreateCourse = () => {
    
   }));
   const courseTable=allcategory.results;
-  console.log(courseTable);
+  // console.log(courseTable);
 
   useEffect(() => {
     dispatch(allcoursecategoryApi())

@@ -14,6 +14,15 @@ import {
   UPDATE_STUDENT_REQUEST,
   UPDATE_STUDENT_SUCCESS,
   UPDATE_STUDENT_FAIL,
+  CREATE_STUDENT_COURSE_REQUEST,
+  CREATE_STUDENT_COURSE_SUCCESS,
+  CREATE_STUDENT_COURSE_FAIL,
+  ALL_STUDENT_COURSE_REQUEST,
+  ALL_STUDENT_COURSE_SUCCESS,
+  ALL_STUDENT_COURSE_FAIL,
+  DELETE_STUDENT_COURSE_REQUEST,
+  DELETE_STUDENT_COURSE_SUCCESS,
+  DELETE_STUDENT_COURSE_FAIL,
 } from "./actionType";
 
 const initiailState = {
@@ -23,7 +32,10 @@ const initiailState = {
   allstudent: [],
   singleview: {},
   deleteStudent:{},
-  updateStudent:{}
+  updateStudent:{},
+  studentcourseDetails:[],
+  allstudentcourse:[],
+  deleteStudentcourse:{}
 };
 const StudentReducer = (state = initiailState, action) => {
   switch (action.type) {
@@ -127,6 +139,66 @@ const StudentReducer = (state = initiailState, action) => {
   
           error: action.payload,
         };
+        // -----cretre student course------
+    case CREATE_STUDENT_COURSE_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case CREATE_STUDENT_COURSE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        studentcourseDetails: action.payload,
+        error: "",
+      };
+    case CREATE_STUDENT_COURSE_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+        // -----all student course------
+    case ALL_STUDENT_COURSE_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case ALL_STUDENT_COURSE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        allstudentcourse: action.payload,
+        error: "",
+      };
+    case ALL_STUDENT_COURSE_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+       //-----delete student---------------
+
+       case DELETE_STUDENT_COURSE_REQUEST:
+        return {
+          ...state,
+          loading: true,
+        };
+      case DELETE_STUDENT_COURSE_SUCCESS:
+        return {
+          ...state,
+          loading: false,
+          deleteStudentcourse: action.payload,
+          error: "",
+        };
+      case DELETE_STUDENT_COURSE_FAIL:
+        return {
+          ...state,
+          loading: false,
+  
+          error: action.payload,
+        };
+
 
 
     default:

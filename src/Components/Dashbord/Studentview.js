@@ -116,7 +116,7 @@ const Studentview = () => {
             </div>
           </Card>
 
-          <div className="banner-main" style={{ paddingTop: "30px" }}>
+          {/* <div className="banner-main" style={{ paddingTop: "30px" }}>
           <div className="card-div">
             <Card className="table-card shadow-lg p-3 mb-5 bg-white rounded">
               <div
@@ -204,7 +204,7 @@ const Studentview = () => {
               </Table>
             </Card>
           </div>
-        </div>
+        </div> */}
 
 
 

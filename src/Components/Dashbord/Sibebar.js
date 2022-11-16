@@ -49,7 +49,7 @@ function Sibebar() {
 <ul className="list-items">
                  <li className='head-list'><a href="#"><i><FaUserCircle /> </i>Students</a></li>
                    <li className='sub-list'> <Link to={"/allstudents"}>All Students</Link></li>
-                    {/* <li className='sub-list'><Link to={"/updatestudent"}>Update Student</Link></li> */}
+                    <li className='sub-list'><Link to={"/studentcourse"}>Student Course</Link></li>
                     <li className='sub-list'><Link to={"/createstudent"}>Create Student</Link></li>
            
                <li className='head-list'><a href="#"><i><FaBookReader /> </i>Courses</a></li>

@@ -1,3 +1,4 @@
+import { CREATE_COURSE_SUCCESS } from "../Course/actionType";
 import {
   CREATE_FAIL,
   CREATE_SUCCESS,
@@ -11,6 +12,15 @@ import {
   UPDATE_STUDENT_REQUEST,
   UPDATE_STUDENT_SUCCESS,
   UPDATE_STUDENT_FAIL,
+  CREATE_STUDENT_COURSE_REQUEST,
+  CREATE_STUDENT_COURSE_SUCCESS,
+  CREATE_STUDENT_COURSE_FAIL,
+  ALL_STUDENT_COURSE_REQUEST,
+  ALL_STUDENT_COURSE_SUCCESS,
+  ALL_STUDENT_COURSE_FAIL,
+  DELETE_STUDENT_COURSE_REQUEST,
+  DELETE_STUDENT_COURSE_SUCCESS,
+  DELETE_STUDENT_COURSE_FAIL,
 } from "./actionType";
 import { STUDENT_REQUEST, STUDENT_SUCCESS, STUDENT_FAIL } from "./actionType";
 
@@ -93,4 +103,56 @@ export const deletestudentRequest = () => ({
     type: UPDATE_STUDENT_FAIL,
     payload: error,
   });
+
+
+  //-----create student course--------
+
+  export const createstudentcourseRequest = (input) => ({
+    type: CREATE_STUDENT_COURSE_REQUEST,
+    payload: input,
+  });
+  
+  export const createstudentcourseSuccess = (studentcourseDetails) => ({
+    type: CREATE_STUDENT_COURSE_SUCCESS,
+    payload: studentcourseDetails.data,
+  });
+  export const createstudentcourseFail = (error) => ({
+    type: CREATE_STUDENT_COURSE_FAIL,
+    payload: error,
+  });
+
+  //   ------------------all student course---------------
+
+export const allstudentcourseRequest = () => ({
+  type: ALL_STUDENT_COURSE_REQUEST,
+  payload: "",
+});
+
+export const allstudentcourseSuccess = (allstudentcourse) => ({
+  type: ALL_STUDENT_COURSE_SUCCESS,
+  payload: allstudentcourse,
+});
+export const allstudentcourseFail = (error) => ({
+  type: ALL_STUDENT_COURSE_FAIL,
+  payload: error,
+});
+
+// --------delete student course-----------------
+
+export const deletestudentcourseRequest = () => ({
+  type: DELETE_STUDENT_COURSE_REQUEST,
+  payload: "",
+});
+export const deletestdentcourseSuccess = (id) => ({
+  type: DELETE_STUDENT_COURSE_SUCCESS,
+  payload: id,
+});
+export const deletestudentcourseFail = (error) => ({
+  type: DELETE_STUDENT_COURSE_FAIL,
+  payload: error,
+});
+
+  
+
+
 

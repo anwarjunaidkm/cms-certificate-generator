@@ -1,10 +1,19 @@
 import { logDOM } from "@testing-library/react";
 import { axiosApi } from "../api_methods";
 import {
+  allstudentcourseFail,
+  allstudentcourseRequest,
+  allstudentcourseSuccess,
   createFail,
   createRequest,
+  createstudentcourseFail,
+  createstudentcourseRequest,
+  createstudentcourseSuccess,
   createSuccess,
+  deletestdentcourseSuccess,
   deletestdentSuccess,
+  deletestudentcourseFail,
+  deletestudentcourseRequest,
   deletestudentFail,
   deletestudentRequest,
   singleviewFail,
@@ -133,3 +142,74 @@ export const updateStudentApi = (catId,store,navigate) => {
     }
   };
 };
+
+
+
+
+// ------------cretee student Course--------------
+
+export const createstudentcourseApi = (input, navigate) => {
+  return async (dispatch) => {
+    dispatch(createstudentcourseRequest(input));
+    try {
+      const res = await axiosApi.post(`/student/student_course/`, input);
+      //   if (res) {
+      //     dispatch(createSuccess(res.data));
+      //     navigate('/allstudents')
+      //   }
+      dispatch(createstudentcourseSuccess(res));
+      navigate("/studentcourse");
+    } catch (error) {
+      console.log(error);
+      dispatch(createstudentcourseFail(error));
+    }
+  };
+};
+
+// ---------Allstudents course------------------
+
+export const allstudentcourseApi = () => {
+
+  // console.log(page);
+return async (dispatch) => {
+  dispatch(allstudentcourseRequest());
+  try {
+    const res = await axiosApi.get(`/student/student_course/`);
+    if (res) {
+      dispatch(allstudentcourseSuccess(res.data));
+    }
+  } catch (error) {
+    console.log(error);
+    dispatch(allstudentcourseFail(error));
+  }
+};
+};
+
+//----------------delete student course------------------
+
+export const deleteStudentcourseApi = (id,navigate) => {
+  return async (dispatch) => {
+    dispatch(deletestudentcourseRequest(id));
+    try {
+      const res = await axiosApi.delete(`/student/student_course/${id}`);
+      if (res) {
+          dispatch(deletestdentcourseSuccess(res.data));
+          // navigate("/allstudents")
+          try {
+            const res = await axiosApi.get(`/student/student_course/`);
+            if (res) {
+              dispatch(allstudentcourseSuccess(res.data));
+            }
+          } catch (error) {
+            console.log(error);
+            dispatch(allstudentcourseFail(error));
+          }
+        
+      }
+    } catch (error) {
+      console.log(error);
+      dispatch(deletestudentcourseFail(error.response?.data));
+    }
+  };
+};
+
