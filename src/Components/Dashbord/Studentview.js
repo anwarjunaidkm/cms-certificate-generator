@@ -9,6 +9,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import {AiOutlineMail,AiOutlinePhone } from 'react-icons/ai'
 import {GrLocationPin } from 'react-icons/gr'
 import {BsCalendarDate } from 'react-icons/bs'
+import { map } from 'lodash'
 
 
 
@@ -21,7 +22,11 @@ const Studentview = () => {
     single:state.StudentReducer.singleview,
     deletes:state.StudentReducer.deleteStudent,
 }));
+// console.log(single);
+const student_courses = single.student_courses
 
+
+console.log(single);
 
   useEffect(()=>{
     dispatch(singleviewApi(params.id))
@@ -45,11 +50,22 @@ const Studentview = () => {
                 <h3 style={{ color: "rgb(97 91 91)", fontSize: "20px" }}>
                   {single.full_name}
                 </h3>
-                <p style={{ color: "gray", marginBottom: "0" }}> <span style={{color:"black"}}>Joining Date : </span> {single.start_date}</p>
-                <p style={{ color: "gray", marginBottom: "0" }}> <span style={{color:"black"}}>Date of Leaving : </span>  {single.end_date}</p>
-                <p style={{ color: "gray",marginBottom:"0" }}> <GrLocationPin /> {single.address} </p>
-
-               
+                <p style={{ color: "gray", marginBottom: "0" }}>
+                  {" "}
+                  <span style={{ color: "black" }}>Joining Date : </span>{" "}
+                  {single.start_date}
+                </p>
+                <p style={{ color: "gray", marginBottom: "0" }}>
+                  {" "}
+                  <span style={{ color: "black" }}>
+                    Date of Leaving :{" "}
+                  </span>{" "}
+                  {single.end_date}
+                </p>
+                <p style={{ color: "gray", marginBottom: "0" }}>
+                  {" "}
+                  <GrLocationPin /> {single.address}{" "}
+                </p>
               </Col>
               <Col md="6">
                 <div>
@@ -59,11 +75,24 @@ const Studentview = () => {
                     alt=""
                   />
                 </div>
-                <p style={{ color: "gray" ,paddingTop:'10px',marginBottom:"0" }}> {single.designation}</p>
-                <p style={{ color: "gray", marginBottom: "0" }}> <span style={{color:"black"}}> <BsCalendarDate /> </span> {single.dob}</p>
-
-                
-
+                <p
+                  style={{
+                    color: "gray",
+                    paddingTop: "10px",
+                    marginBottom: "0",
+                  }}
+                >
+                  {" "}
+                  {single.designation}
+                </p>
+                <p style={{ color: "gray", marginBottom: "0" }}>
+                  {" "}
+                  <span style={{ color: "black" }}>
+                    {" "}
+                    <BsCalendarDate />{" "}
+                  </span>{" "}
+                  {single.dob}
+                </p>
               </Col>
             </Row>
             <Row>
@@ -73,13 +102,18 @@ const Studentview = () => {
                     Contact Details :
                   </h5>
                   <p style={{ color: "gray", marginBottom: "0" }}>
-                  <span style={{color:"black"}}> <AiOutlineMail />  </span> : {single.email}
+                    <span style={{ color: "black" }}>
+                      {" "}
+                      <AiOutlineMail />{" "}
+                    </span>{" "}
+                    : {single.email}
                   </p>
-                     <p style={{ color: "gray" }}>
-                     <span style={{color:"black"}}><AiOutlinePhone /> :</span> {single.phone}</p>
-                 
-                 
-                
+                  <p style={{ color: "gray" }}>
+                    <span style={{ color: "black" }}>
+                      <AiOutlinePhone /> :
+                    </span>{" "}
+                    {single.phone}
+                  </p>
                 </div>
               </Col>
             </Row>
@@ -103,9 +137,8 @@ const Studentview = () => {
                 </Button>
               </div>
               <div>
-              
                 <Button
-                onClick={()=> navigate(`/updatestudent/${params.id}`)}
+                  onClick={() => navigate(`/updatestudent/${params.id}`)}
                   className="update-btn-course-update"
                   color="primary"
                   size=""
@@ -116,103 +149,54 @@ const Studentview = () => {
             </div>
           </Card>
 
-          {/* <div className="banner-main" style={{ paddingTop: "30px" }}>
-          <div className="card-div">
-            <Card className="table-card shadow-lg p-3 mb-5 bg-white rounded">
-              <div
-                className="d-flex"
-                style={{ justifyContent: "space-between" }}
-              >
-                <div>
-                  <h5 className="banner-heading">Student Course</h5>
-                </div>
-                <div>
-                  <Button
-                    style={{ backgroundColor: "#34C38F", border: "none" }}
-                  >
-                    + Create New Course
-                  </Button>
-                </div>
-              </div>
-              <Table responsive>
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Course Name</th>
-                    <th>Progress</th>
-                    <th>Update Progress</th>
-                    <th >Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td scope="row">RE12</td>
-                    <td>react</td>
-                    <td>Pending</td>
-                    <td>
-                      <Input className="w-50" type="select"></Input>
-                    </td>
-                    <td>
-                        <div style={{display:'flex'}}>
-                            <div >
-                                < Button style={{backgroundColor:'blue', border:'none',width:'60px',height:'30px' ,fontSize:'12px'}}>View</Button>
-                            </div>
-                            <div style={{paddingLeft:'15px'}}>
-                                <Button style={{backgroundColor:'red',border:'none',width:'60px',height:'30px',fontSize:'12px'}}>Delete</Button>
-                            </div>
-                        </div>
+          <Row>
+            {map(student_courses, (item, key) => (
+              <Col key={key} md="3">
+                <Card className="card" style={{ marginTop: "10px" }}>
+                  <h3 style={{ fontSize: "15px", padding: "10px" }}>
+                    Course Name :{" "}
+                    <span style={{ color: "red" }}>
+                      {item.course.course_name}
+                    </span>
+                  </h3>
+                  <h3 style={{ fontSize: "15px", padding: "10px" }}>
+                    Duration : <span> {item.course.duration}</span>
+                  </h3>
+                  <h3 style={{ fontSize: "15px", padding: "10px" }}>
+                    Progress : <span> {item.progress}</span>
+                  </h3>
+                  <h3 style={{ fontSize: "15px ", padding: "10px" }}>
+                    Course Category Name :{" "}
+                    <span>
+                      {" "}
+                      {item.course.course_category.course_category_name}
+                    </span>
+                  </h3>
+                  <h3 style={{ fontSize: "15px", padding: "10px" }}>
+                    Desgination :{" "}
+                    <span> {item.course.course_category.designation}</span>
+                  </h3>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+          <div style={{ paddingTop: "10px" ,paddingBottom: "10px" ,display:'flex',justifyContent:'center' }}>
+            <Link to={"/createstudentcourse"}>
+              {" "}
+              <Button style={{ backgroundColor: "#34C38F", border: "none" ,marginRight:'12px'}}>
+                + Create New Course
+              </Button>
+            </Link>
 
-                    </td>
-                  </tr>
-                  <tr>
-                    <td scope="row">FL34</td>
-                    <td>Flutter</td>
-                    <td>Pending</td>
-                    <td>
-                      <Input className="w-50" type="select"></Input>
-                    </td>
-                    <td>
-                    <div style={{display:'flex'}}>
-                            <div >
-                                < Button style={{backgroundColor:'blue', border:'none',width:'60px',height:'30px' ,fontSize:'12px'}}>View</Button>
-                            </div>
-                            <div style={{paddingLeft:'15px'}}>
-                                <Button style={{backgroundColor:'red',border:'none',width:'60px',height:'30px',fontSize:'12px'}}>Delete</Button>
-                            </div>
-                        </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td scope="row">JV67</td>
-                    <td>Java</td>
-                    <td>Pending</td>
-                    <td>
-                      <Input className="w-50" type="select"></Input>
-                    </td>
-                    <td>
-                    <div style={{display:'flex'}}>
-                            <div >
-                                < Button style={{backgroundColor:'blue', border:'none',width:'60px',height:'30px' ,fontSize:'12px'}}>View</Button>
-                            </div>
-                            <div style={{paddingLeft:'15px'}}>
-                                <Button style={{backgroundColor:'red',border:'none',width:'60px',height:'30px',fontSize:'12px'}}>Delete</Button>
-                            </div>
-                        </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </Table>
-            </Card>
+            <Link to={"/createstudentcourse"}>
+              {" "}
+              <Button style={{ backgroundColor: "#34C38F", border: "none" }}>
+                Certificate
+              </Button>
+            </Link>
           </div>
-        </div> */}
-
-
-
-          
         </Container>
       </section>
-     
-     
     </Layout>
   );
 }
