@@ -19,6 +19,7 @@ import AllcourseCategoryPage from './Pages/AllcourseCategoryPage';
 import Studentview from './Components/Dashbord/Studentview';
 import StudentCourse from './Components/Dashbord/StudentCourse';
 import CreateStudentCourse from './Components/Dashbord/CreateStudentCourse';
+import Certificate from './Certificate';
 
 
 
@@ -49,6 +50,8 @@ function App() {
           <Route path='studentview/:id' element={<Studentview />}></Route>
           <Route path='studentcourse' element={<StudentCourse />}></Route>
           <Route path='createstudentcourse' element={<CreateStudentCourse />}></Route>
+          <Route path='certificate/:id' element={<Certificate />}></Route>
+         
          
 
           

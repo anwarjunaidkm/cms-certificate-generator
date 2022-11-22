@@ -176,6 +176,7 @@ console.log(single);
                     Desgination :{" "}
                     <span> {item.course.course_category.designation}</span>
                   </h3>
+                  
                 </Card>
               </Col>
             ))}
@@ -187,8 +188,9 @@ console.log(single);
                 + Create New Course
               </Button>
             </Link>
+           
 
-            <Link to={"/createstudentcourse"}>
+            <Link to={`/certificate/${params.id}`}>
               {" "}
               <Button style={{ backgroundColor: "#34C38F", border: "none" }}>
                 Certificate
